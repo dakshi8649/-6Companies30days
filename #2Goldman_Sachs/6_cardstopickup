@@ -1,0 +1,40 @@
+class Solution {
+public:
+int vec(vector<int> v){
+    int n= v.size();
+    int mini = INT_MAX;
+    for(int i=1;i<n;i++){
+        int diff=v[i]-v[i-1]+1;
+        mini=min(diff,mini);
+    }
+    return mini;
+}
+ map<int,int> m;
+    int minimumCardPickup(vector<int>& cards) {
+        for(auto it:cards){
+            m[it]++;
+        }
+        bool ch = false;
+        for(auto it:m){
+            if(it.second>1){
+                ch=true;
+            }
+        }
+        int mini=INT_MAX;
+if(ch==true){
+map<int,vector<int>> ma;
+for(int i=0;i<cards.size();i++){
+    ma[cards[i]].push_back(i);
+}
+for(auto it:ma){
+    if(it.second.size()>1){
+        int diff = vec(it.second);
+        mini=min(diff,mini);
+    }
+}
+return mini;
+}
+
+return -1;
+    }
+};
