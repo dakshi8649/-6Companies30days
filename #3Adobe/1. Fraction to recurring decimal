@@ -1,0 +1,67 @@
+class Solution {
+public:
+string func(long long t){
+    if(t==0){
+        return "0";
+    }
+    string ans="";
+    while(t>0){
+        int rem=t%10;
+        ans+=(rem+'0');
+        t/=10;
+    }
+    string ne="";
+    for(int i=ans.length()-1;i>=0;i--){
+        ne+=ans[i];
+    }
+    return ne;
+}
+#define ll long long
+    string fractionToDecimal(int numerator, int denominator) {
+        long long int num = abs(numerator);
+        long long int den = abs(denominator);
+        ll q = num/den;
+        ll r = num%den;
+        string qu = func(q);
+        cout<<qu;
+        if(r==0){
+            if(numerator<0 && denominator>0){
+        string b = "-";
+        qu.insert(0,b);
+    }
+    if(numerator>0 && denominator<0){
+        string b = "-";
+        qu.insert(0,b);
+    }
+            return qu;
+        }
+        qu+='.';
+        map<int,int> m;
+        while(r!=0){
+            if(m.find(r)!=m.end()){
+                qu+=')';
+            string z = "(";
+            qu.insert(m[r],z);
+            break;
+            }
+            else{
+                m[r]=qu.length();
+            r*=10;
+            q=r/den;
+            r=r%den;
+            qu+=to_string(q);
+            }
+            
+    }
+    if(numerator<0 && denominator>0){
+        string b = "-";
+        qu.insert(0,b);
+    }
+    if(numerator>0 && denominator<0){
+        string b = "-";
+        qu.insert(0,b);
+    }       
+        return qu;
+    }
+
+};

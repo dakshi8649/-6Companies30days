@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool increasingTriplet(vector<int>& a) {
+        if(a.size()<3){
+            return false;
+        }
+        int left = INT_MAX;
+        int right = INT_MAX;
+        for(int i=0;i<a.size();i++){
+            if(a[i]<left ){
+                left = a[i];
+                if(left>right){
+                    right=INT_MAX;
+                }
+            }
+            else if(a[i]<right && a[i]!=left){
+                right=a[i];
+            }
+            else if(a[i]>left && a[i]>right){
+                return true;
+            }
+        }
+return false;
+    }
+};
